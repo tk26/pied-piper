@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .page-header
+    h3 Search Providers
+  form.form-horizontal(id='providers-search-form', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='city') Search By City
+      .col-sm-7
+        input.form-control(type='search', name='city', id='city', placeholder='Type in a city...', required)
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        button.col-sm-3.btn.btn-primary(type='submit')
+          i.fa.fa-user
+          | Search

@@ -13,6 +13,9 @@
       ul.nav.navbar-nav
         li(class=(title == 'Home') ? 'active' : undefined)
           a(href='/') Home
+      ul.nav.navbar-nav
+        li(class=(title == 'Search') ? 'active' : undefined)
+          a(href='/search') Search
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=(title == 'Login') ? 'active' : undefined)

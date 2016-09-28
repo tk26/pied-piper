@@ -31,6 +31,7 @@ dotenv.load({ path: '.env.example' });
  */
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
+const searchController = require('./controllers/search');
 
 /**
  * API keys and Passport configuration.
@@ -127,6 +128,8 @@ app.post('/account/password', passportConfig.isAuthenticated, userController.pos
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 
+app.get('/search', searchController.getSearch);
+app.post('/search', searchController.postSearch);
 /**
  * API examples routes.
  */
