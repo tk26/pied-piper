@@ -14,3 +14,13 @@ block content
         button.col-sm-3.btn.btn-primary(type='submit')
           i.fa.fa-user
           | Search
+
+    div
+    table
+      thead
+        tr: th Providers
+      tbody
+        each provider, i in providers
+          tr
+            td 
+              a(href='/provider/' + provider.pidKey) #{provider.FirstName} #{provider.LastName}

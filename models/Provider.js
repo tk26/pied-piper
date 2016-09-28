@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const providerSchema = new mongoose.Schema({
+  pidKey : Number,
   FirstName: String,
   LastName: String,
   City: String,

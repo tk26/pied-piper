@@ -5,6 +5,10 @@ const Provider = require('../models/Provider');
  * Search page.
  */
 exports.getSearch = (req, res) => {
+  const provider = new Provider({
+    City : req.body.city
+  });
+  providers = [];
   res.render('search', {
     title: 'Search'
   });
@@ -20,12 +24,11 @@ exports.postSearch = (req, res, next) => {
     City : req.body.city
   });
 
-  Provider.find({ City: req.body.city }, (err, providers) => {
+  Provider.find({ City: req.body.city }, (err, docs) => {
     if (!err){ 
-    	//play with the providers
-    	//res.render(providers);
+    	//console.log(docs);
+    	res.render('search', { title: 'Search', providers: docs });
     } 
   });
-  res.redirect('back');
 };
 
