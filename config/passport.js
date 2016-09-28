@@ -6,7 +6,6 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const OpenIDStrategy = require('passport-openid').Strategy;
 const OAuthStrategy = require('passport-oauth').OAuthStrategy;
-const OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
 
 const User = require('../models/User');
 
