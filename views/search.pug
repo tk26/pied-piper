@@ -15,12 +15,17 @@ block content
           i.fa.fa-user
           | Search
 
+    h4 Providers:
     div
     table
       thead
-        tr: th Providers
+        tr: th Name 
+            th Specialization
+            th Address
       tbody
         each provider, i in providers
           tr
-            td 
+            td    
               a(href='/provider/' + provider.pidKey) #{provider.FirstName} #{provider.LastName}
+            td    #{provider.Spec}
+            td    #{provider.Add1}
