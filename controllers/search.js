@@ -24,7 +24,7 @@ exports.postSearch = (req, res, next) => {
     City : req.body.city
   });
 
-  Provider.find({ City: req.body.city }, (err, docs) => {
+  Provider.find({ City: { $regex : new RegExp(req.body.city, "i") } }, (err, docs) => {
     if (!err){ 
     	//console.log(docs);
     	res.render('search', { title: 'Search', providers: docs });
