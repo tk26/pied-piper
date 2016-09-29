@@ -32,6 +32,7 @@ dotenv.load({ path: '.env.example' });
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const searchController = require('./controllers/search');
+const providerController = require('./controllers/provider');
 
 /**
  * API keys and Passport configuration.
@@ -116,10 +117,6 @@ app.get('/', homeController.index);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
-app.get('/forgot', userController.getForgot);
-app.post('/forgot', userController.postForgot);
-app.get('/reset/:token', userController.getReset);
-app.post('/reset/:token', userController.postReset);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
@@ -130,6 +127,9 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 
 app.get('/search', searchController.getSearch);
 app.post('/search', searchController.postSearch);
+
+app.get('/provider/:pidKey', providerController.getProvider);
+app.post('/provider/:pidKey', passportConfig.isAuthenticated, providerController.saveProvider);
 /**
  * API examples routes.
  */

@@ -1,0 +1,52 @@
+extends layout
+block content
+  link(href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css', rel='stylesheet')
+  link(rel='stylesheet', type='text/css', href='../css/mockup_imports/provider.css')
+  head
+    title #{title}
+  .container
+    legend
+      big
+        center Provider's Profile
+    .row
+      .col-md-offset-2.col-md-8.col-lg-offset-3.col-lg-6
+        .well.profile
+          .col-sm-12
+            .col-xs-12.col-sm-8
+              h2 #{provider.FirstName} #{provider.LastName}, #{provider.Degree}
+              p
+                strong Specialization: 
+                |  #{provider.Spec}
+              p
+                strong Call: 
+                a(href='tel:'+provider.Phone)
+                  | #{provider.Phone}
+              p
+                strong Address: 
+                a(href='http://maps.google.com/?q='+provider.Add1+' '+provider.City+ ' '+provider.St)
+                  | #{provider.Add1} #{provider.City} #{provider.St}
+              
+              p
+                form.form-horizontal(id='providers-favorites-form', action='/provider/' + provider.pidKey method='POST')
+                  input(type='hidden', name='_csrf', value=_csrf)
+                  .form-group
+                    button.btn.btn-primary(type='submit')
+                      i.fa.fa-save
+                      |  Save as Fav
+
+            .col-xs-12.col-sm-4.text-center
+              figure
+                img.img-circle.img-responsive(src='../img/tk.jpg', alt='')
+                figcaption.ratings
+                  p
+                    | Ratings
+                    a(href='#')
+                      span.fa.fa-star
+                    a(href='#')
+                      span.fa.fa-star
+                    a(href='#')
+                      span.fa.fa-star
+                    a(href='#')
+                      span.fa.fa-star
+                    a(href='#')
+                      span.fa.fa-star-o

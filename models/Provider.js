@@ -7,7 +7,12 @@ const providerSchema = new mongoose.Schema({
   City: String,
   Add1: String,
   Add2: String,
-  Spec: String
+  Spec: String,
+  Degree: String,
+  FullName: String,
+  Phone: String,
+  City: String,
+  St: String
 });
 
 const Provider = mongoose.model('Provider', providerSchema);
