@@ -1,6 +1,7 @@
 extends ../layout
 
 block content
+  link(rel='stylesheet', type='text/css', href='../css/bootstrap-multiselect.css')
   .page-header
     h3 Profile Information
 
@@ -38,6 +39,30 @@ block content
       label.col-sm-3.control-label Gravatar
       .col-sm-4
         img(src=user.gravatar(), class='profile', width='100', height='100')
+    .form-group
+      label.col-xs-3.control-label Preferences
+      .col-xs-4
+        .checkbox.disabled
+          label
+            input#pref0(type='checkbox', name='pref0', value='true', checked=user.preferences.indexOf(0)!==-1)
+            | Routine Checkup
+        .checkbox.disabled
+          label
+            input#pref1(type='checkbox', name='pref1', value='true', checked=user.preferences.indexOf(1)!==-1)
+            | Tooth Ache
+        .checkbox.disabled
+          label
+            input#pref2(type='checkbox', name='pref2', value='true', checked=user.preferences.indexOf(2)!==-1)
+            | Root Canal
+        .checkbox.disabled
+          label
+            input#pref3(type='checkbox', name='pref3', value='true', checked=user.preferences.indexOf(3)!==-1)
+            | Gingivitis
+        .checkbox.disabled
+          label
+            input#pref4(type='checkbox', name='pref4', value='true', checked=user.preferences.indexOf(4)!==-1)
+            | Other
+
     .form-group
       .col-sm-offset-3.col-sm-4
         button.btn.btn.btn-primary(type='submit')

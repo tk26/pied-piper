@@ -13,6 +13,8 @@ const providerSchema = new mongoose.Schema({
   Phone: String,
   City: String,
   St: String
+  //,
+  //favoritedBy : Array
 });
 
 const Provider = mongoose.model('Provider', providerSchema);

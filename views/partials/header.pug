@@ -16,6 +16,9 @@
       ul.nav.navbar-nav
         li(class=(title == 'Search') ? 'active' : undefined)
           a(href='/search') Search
+      ul.nav.navbar-nav
+        li(class=(title == 'Favorites') ? 'active' : undefined)
+          a(href='/favorites') Favorites
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=(title == 'Login') ? 'active' : undefined)

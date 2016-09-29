@@ -141,6 +141,59 @@ exports.postUpdateProfile = (req, res, next) => {
     user.profile.gender = req.body.gender || '';
     user.profile.location = req.body.location || '';
     user.profile.website = req.body.website || '';
+
+    // user.pref0 = req.body.pref0;
+    // user.pref1 = req.body.pref1;
+    // user.pref2 = req.body.pref2;
+    // user.pref3 = req.body.pref3;
+    // user.pref4 = req.body.pref4;
+
+    if(req.body.pref0) {
+      user.preferences.push(0);
+    }
+    else{
+      if(user.preferences.indexOf(0) > -1){
+        user.preferences.splice(user.preferences.indexOf(0));
+      }
+    }
+    
+    if(req.body.pref1) {
+      user.preferences.push(1);
+    }
+    else{
+      if(user.preferences.indexOf(1) > -1){
+        user.preferences.splice(user.preferences.indexOf(1));
+      }
+    }
+
+    if(req.body.pref2) {
+      user.preferences.push(2);
+    }
+    else{
+      if(user.preferences.indexOf(2) > -1){
+        user.preferences.splice(user.preferences.indexOf(2));
+      }
+    }
+
+    if(req.body.pref3) {
+      user.preferences.push(3);
+    }
+    else{
+      if(user.preferences.indexOf(3) > -1){
+        user.preferences.splice(user.preferences.indexOf(3));
+      }
+    }
+
+    if(req.body.pref4) {
+      user.preferences.push(4);
+    }
+    else{
+      if(user.preferences.indexOf(4) > -1){
+        user.preferences.splice(user.preferences.indexOf(4));
+      }
+    }
+
+
     user.save((err) => {
       if (err) {
         if (err.code === 11000) {

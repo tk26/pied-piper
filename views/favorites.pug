@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .page-header
+    h4 Favorite Providers:
+    div
+    table
+      thead
+        tr: th Name 
+            th Specialization
+            th Address
+      tbody
+        each provider, i in providers
+          tr
+            td    
+              a(href='/provider/' + provider) #{provider}

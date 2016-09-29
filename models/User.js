@@ -9,7 +9,15 @@ const userSchema = new mongoose.Schema({
   passwordResetExpires: Date,
 
   favoriteProviders : Array,
-  
+
+  /*pref0: Boolean,
+  pref1: Boolean,
+  pref2: Boolean,
+  pref3: Boolean,
+  pref4: Boolean,*/
+
+  preferences : Array,
+
   facebook: String,
   twitter: String,
   google: String,

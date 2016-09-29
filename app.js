@@ -33,6 +33,7 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const searchController = require('./controllers/search');
 const providerController = require('./controllers/provider');
+const favoritesController = require('./controllers/favorites');
 
 /**
  * API keys and Passport configuration.
@@ -130,6 +131,9 @@ app.post('/search', searchController.postSearch);
 
 app.get('/provider/:pidKey', providerController.getProvider);
 app.post('/provider/:pidKey', passportConfig.isAuthenticated, providerController.saveProvider);
+
+app.get('/favorites', passportConfig.isAuthenticated, favoritesController.getFavorites);
+
 /**
  * API examples routes.
  */
