@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 const passport = require('passport');
 const User = require('../models/User');
 
+const geoip = require('geoip-lite');
 /**
  * GET /login
  * Login page.
@@ -85,10 +86,14 @@ exports.postSignup = (req, res, next) => {
     req.flash('errors', errors);
     return res.redirect('/signup');
   }
-
+  
+  //console.log("ip is: "+req.connection.remoteAddress);
+  var ip = req.connection.remoteAddress;
+  ip = "66.42.202.146";
   const user = new User({
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    //Later: address: geoip.lookup(ip)
   });
 
   User.findOne({ email: req.body.email }, (err, existingUser) => {

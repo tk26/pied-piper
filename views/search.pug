@@ -2,30 +2,101 @@ extends layout
 
 block content
   .page-header
-    h3 Search Providers
-  form.form-horizontal(id='providers-search-form', method='POST')
+  form.form-horizontal(action='/search', method='POST')
+    h3 Select Search Criteria
     input(type='hidden', name='_csrf', value=_csrf)
-    .form-group
-      label.col-sm-3.control-label(for='city') Search By City
-      .col-sm-7
-        input.form-control(type='search', name='city', id='city', placeholder='Type in a city...', required)
-    .form-group
-      .col-sm-offset-3.col-sm-7
-        button.col-sm-3.btn.btn-primary(type='submit')
-          i.fa.fa-user
-          | Search
+    .container
+    .row
+      .col-md-4.col-sm-12
+        .card
+          img.card-img-top(src='../img/default.png', width='200px', height='200px', alt='Card image cap')
+          .card-block
+            h4.card-title.checkbox.disabled 
+             label
+              input#option1(type='checkbox', name='option1', value='true')
+              | Oral and maxillofacial surgeons
+            p.card-text
+              | performs surgical tooth extractions, and diagnoses and surgically treats diseases, injuries and defects of the mouth, jaw and face
+      
+      .col-md-4.col-sm-12
+        .card
+          img.card-img-top(src='../img/default.png', width='200px', height='200px',alt='Card image cap')
+          .card-block
+            h4.card-title.checkbox.disabled 
+             label
+              input#option2(type='checkbox', name='option2', value='true')
+              | Orthodontists
+            p.card-text
+              | diagnoses and corrects tooth alignment and facial deformities.
+      
+      .col-md-4.col-sm-12
+        .card
+          img.card-img-top(src='../img/default.png', width='200px', height='200px',alt='Card image cap')
+          .card-block
+            h4.card-title.checkbox.disabled 
+             label
+              input#option3(type='checkbox', name='option3', value='true')
+              | Endodontist
+            p.card-text
+              | specializes in the diagnosis and treatment of the root pulp and related structures of the teeth, such as the root canal
+    br
+    .row
+      .col-md-4.col-sm-12
+        .card
+          img.card-img-top(src='../img/default.png', width='200px', height='200px',alt='Card image cap')
+          .card-block
+            h4.card-title.checkbox.disabled 
+             label
+              input#option4(type='checkbox', name='option4', value='true')
+              | Periodontists
+            p.card-text
+              | Diagnoses and treats diseases of the gums and related structures in the mouth.
+      .col-md-4.col-sm-12
+        .card
+          img.card-img-top(src='../img/default.png', width='200px', height='200px',alt='Card image cap')
+          .card-block
+            h4.card-title.checkbox.disabled 
+             label
+              input#option5(type='checkbox', name='option5', value='true')
+              | Pediatric dentists
+            p.card-text
+              | Provides dental care for infants, children, adolescents and sometimes special needs patients.
+      .col-md-4.col-sm-12
+        .card
+          img.card-img-top(src='../img/default.png', width='200px', height='200px',alt='Card image cap')
+          .card-block
+            h4.card-title.checkbox.disabled 
+             label
+              input#option6(type='checkbox', name='option6', value='true')
+              | Prosthodontists
+            p.card-text
+              | Performs diagnosis and treatment involving the replacement of missing teeth.
+      .form-group
+        button.col-sm-2.col-md-2.btn.btn-success(type='submit')
+         i.fa.fa-user
+         | Search
 
-    h4 Providers:
-    div
-    table
-      thead
-        tr: th Name 
-            th Specialization
-            th Address
-      tbody
-        each provider, i in providers
-          tr
-            td    
-              a(href='/provider/' + provider.pidKey) #{provider.FirstName} #{provider.LastName}
-            td    #{provider.Spec}
-            td    #{provider.Add1}
+  br
+  h4 Providers:
+    div#providers
+      input.search(placeholder='Search')
+      table
+        thead
+          tr: th Name 
+              th Specialization
+              th Address
+              th City
+              th State
+        tbody.list
+          each provider, i in providers
+            tr
+              td.name    
+                a(href='/provider/' + provider.pidKey) #{provider.FirstName} #{provider.LastName}
+              td.spec #{provider.Spec}
+              td.addr #{provider.Add1}
+              td.city #{provider.City}
+              td.state #{provider.St}
+    script(src='../js/list.js')
+    script(type='text/javascript').
+      var options = { valueNames: [ 'name', 'spec', 'addr' ] };
+      var userList = new List('providers', options);
